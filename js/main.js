@@ -1,19 +1,23 @@
 // ハンバーガーメニュー
 const hamburgerButton = document.querySelector('#js-buttonHamburger');
-hamburgerButton.addEventListener('click', (e) => {
-  const isExpanded = e.currentTarget.getAttribute('aria-expanded') !== 'false';
-  e.currentTarget.setAttribute('aria-expanded', !isExpanded);
-  document.documentElement.classList.toggle('is-drawerActive');
+const drawerMenu = document.getElementById('drawerMenu');
+const mask = document.querySelector('.mask');
+const header = document.querySelector('.header');
+
+hamburgerButton.addEventListener('click', () => {
+  const isExpanded = hamburgerButton.getAttribute('aria-expanded') === 'true';
+
+  // aria-expanded属性の更新
+  hamburgerButton.setAttribute('aria-expanded', !isExpanded);
+
+  // drawerMenuとheaderの開閉状態の切り替え
+  drawerMenu.classList.toggle('open');
+  header.classList.toggle('open'); // headerにopenクラスを追加/削除
+
+  // メニューが開いたときに背景マスクを表示
+  mask.classList.toggle('open', !isExpanded);
 });
 
-document.getElementById('js-buttonHamburger').addEventListener('click', function () {
-  const drawer = document.getElementById('drawerMenu');
-  if (drawer.classList.contains('open')) {
-    drawer.classList.remove('open');
-  } else {
-    drawer.classList.add('open');
-  }
-});
 
 //TOPに戻る
 window.addEventListener("DOMContentLoaded", function () {
