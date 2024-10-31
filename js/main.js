@@ -1,7 +1,6 @@
 // ハンバーガーメニュー
 const hamburgerButton = document.querySelector('#js-buttonHamburger');
 const drawerMenu = document.getElementById('drawerMenu');
-const mask = document.querySelector('.mask');
 const header = document.querySelector('.header');
 
 hamburgerButton.addEventListener('click', () => {
@@ -13,9 +12,6 @@ hamburgerButton.addEventListener('click', () => {
   // drawerMenuとheaderの開閉状態の切り替え
   drawerMenu.classList.toggle('open');
   header.classList.toggle('open'); // headerにopenクラスを追加/削除
-
-  // メニューが開いたときに背景マスクを表示
-  mask.classList.toggle('open', !isExpanded);
 });
 
 
